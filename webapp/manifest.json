@@ -1,0 +1,327 @@
+{
+	"_version": "1.7.0",
+	"start_url": "start.html",
+	"sap.app": {
+		"id": "OVP.OverViewPage",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{app_title}}",
+		"description": "{{app_description}}",
+		"dataSources": {
+			"Northwind": {
+				"uri": "/northwind/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0",
+					"localUri": "localService/Northwind/metadata.xml",
+					"annotations": [
+						"annotation0",
+						"Products",
+						"Product_Sales_for_1997"
+					]
+				}
+			},
+			"annotation0": {
+				"type": "ODataAnnotation",
+				"uri": "localService/Northwind/annotation0.xml",
+				"settings": {
+					"localUri": "localService/Northwind/annotation0.xml"
+				}
+			},
+			"Products": {
+				"type": "ODataAnnotation",
+				"uri": "localService/Northwind/Products.xml",
+				"settings": {
+					"localUri": "localService/Northwind/Products.xml"
+				}
+			},
+			"Product_Sales_for_1997": {
+				"type": "ODataAnnotation",
+				"uri": "localService/Northwind/Product_Sales_for_1997.xml",
+				"settings": {
+					"localUri": "localService/Northwind/Product_Sales_for_1997.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "OVP.cardtemplate",
+			"version": "0.0.0"
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": [
+			"sap_belize"
+		]
+	},
+	"sap.ui5": {
+		"dependencies": {
+			"minUI5Version": "${sap.ui5.dist.version}",
+			"libs": {
+				"sap.ovp": {}
+			}
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"@i18n": {
+				"preload": true,
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			},
+			"Northwind": {
+				"dataSource": "Northwind",
+				"settings": {
+					"defaultCountMode": "Inline",
+					"disableHeadRequestForToken": true
+				}
+			}
+		},
+		"extends": {
+			"extensions": {
+				"sap.ui.controllerExtensions": {
+					"sap.ovp.app.Main": {
+						"controllerName": "OVP.OverViewPage.ext.custom"
+					}
+				},
+				"sap.ui.viewExtensions": {
+					"sap.ovp.app.Main": {
+						"SmartFilterBarControlConfigurationExtension|Product": {
+							"className": "sap.ui.core.Fragment",
+							"fragmentName": "OVP.OverViewPage.ext.customFilter",
+							"type": "XML"
+						}
+					}
+				}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		}
+	},
+	"sap.ovp": {
+		"globalFilterModel": "Northwind",
+		"globalFilterEntityType": "GlobalFilters",
+		"containerLayout": "fixed",
+		"enableLiveFilter": false,
+		"considerAnalyticalParameters": true,
+		"showDateInRelativeFormat": true,
+		"useDateRangeType": true,
+		"smartVariantRequired": true,
+		"cards": {
+			"card00": {
+				"model": "Northwind",
+				"template": "sap.ovp.cards.stack",
+				"settings": {
+					"title": "{{card07_title}}",
+					"subTitle": "{{card07_subTitle}}",
+					"entitySet": "Products",
+					"addODataSelect": false,
+					"objectStreamCardsSettings": {
+						"annotationPath": "com.sap.vocabularies.UI.v1.Facets#stack"
+					},
+					"identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#header,com.sap.vocabularies.UI.v1.Identification#card"
+				}
+			},
+			"card01": {
+				"model": "Northwind",
+				"template": "sap.ovp.cards.linklist",
+				"settings": {
+					"title": "{{card06_title}}",
+					"subTitle": "{{card06_subTitle}}",
+					"targetUri": "https://en.wikipedia.org/wiki/Mangalyaan_2",
+					"listFlavor": "standard",
+					"defaultSpan": {
+						"rows": 5,
+						"cols": 1
+					},
+					"staticContent": [
+						{
+							"title": "Create Supplier",
+							"imageUri": "sap-icon://add-contact",
+							"imageAltText": "Create Supplier",
+							"targetUri": "https://mail.tcs.com",
+							"openInNewWindow": true
+						},
+						{
+							"title": "Create Purchase Order",
+							"imageUri": "sap-icon://sales-document",
+							"imageAltText": "Create Purchase Order",
+							"targetUri": "https://mail.tcs.com",
+							"openInNewWindow": true
+						},
+						{
+							"title": "Manage Purchase Orders",
+							"imageUri": "sap-icon://sales-order-item",
+							"imageAltText": "Manage Purchase Orders",
+							"targetUri": "https://mail.tcs.com",
+							"openInNewWindow": true
+						},
+						{
+							"title": "Manage Purchase Requisitions",
+							"imageUri": "sap-icon://list",
+							"imageAltText": "Manage Purchase Requisitions",
+							"targetUri": "https://mail.tcs.com",
+							"openInNewWindow": true
+						},
+						{
+							"title": "Create Contract",
+							"imageUri": "sap-icon://credit-card",
+							"imageAltText": "Create Contract",
+							"targetUri": "https://mail.tcs.com",
+							"openInNewWindow": true
+						},
+						{
+							"title": "Create Purchase Requisition",
+							"imageUri": "sap-icon://create-form",
+							"imageAltText": "Create Purchase Requisition",
+							"targetUri": "https://mail.tcs.com",
+							"openInNewWindow": true
+						}
+					]
+				}
+			},
+			"card05": {
+				"model": "Northwind",
+				"template": "sap.ovp.cards.list",
+				"settings": {
+					"title": "{{card04_title}}",
+					"subTitle": "{{card04_subTitle}}",
+					"entitySet": "Invoices",
+					"listType": "condensed",
+					"listFlavor": "standard",
+					"sortBy": "ExtendedPrice",
+					"sortOrder": "descending",
+					"addODataSelect": false,
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#Top5Invoices",
+					"dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#line",
+					"identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#productHeader1",
+					"valueSelectionInfo": "{{card04_value}}",
+					"showSortingInHeader": true,
+					"showFilterInHeader": true,
+					"defaultSpan": {
+						"rows": 5,
+						"cols": 1
+					}
+				}
+			},
+			"card03": {
+				"model": "Northwind",
+				"template": "sap.ovp.cards.list",
+				"settings": {
+					"title": "{{card05_title}}",
+					"subTitle": "{{card05_subTitle}}",
+					"listType": "condensed",
+					"listFlavor": "bar",
+					"sortBy": "UnitsInStock",
+					"sortOrder": "ascending",
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#Top5OutOfStock",
+					"entitySet": "Products_by_Categories"
+				}
+			},
+			"card04": {
+				"model": "Northwind",
+				"template": "sap.ovp.cards.list",
+				"settings": {
+					"title": "{{card01_title}}",
+					"subTitle": "{{card01_subTitle}}",
+					"entitySet": "Products",
+					"listType": "extended",
+					"listFlavor": "bar",
+					"sortBy": "ReorderLevel",
+					"sortOrder": "ascending",
+					"addODataSelect": false,
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#TopReorderProducts",
+					"dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#KPI",
+					"identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#urlbasedNavigation",
+					"valueSelectionInfo": "{{card04_value}}",
+					"showSortingInHeader": true,
+					"showFilterInHeader": true,
+					"stopResizing": true
+				}
+			},
+			"card02": {
+				"model": "Northwind",
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{card10_title}}",
+					"subTitle": "{{card10_subTitle}}",
+					"entitySet": "Product_Sales_for_1997",
+					"kpiAnnotationPath": "com.sap.vocabularies.UI.v1.KPI#donutKPI",
+					"navigation": "dataPointNav"
+				}
+			},
+			"card06": {
+				"model": "Northwind",
+				"template": "sap.ovp.cards.charts.analytical",
+				"settings": {
+					"title": "{{card09_title}}",
+					"subTitle": "{{card09_subTitle}}",
+					"entitySet": "Products_Above_Average_Prices",
+					"kpiAnnotationPath": "com.sap.vocabularies.UI.v1.KPI#ColumnChart",
+					"navigation": "dataPointNav"
+				}
+			},
+			"card07": {
+				"model": "Northwind",
+				"template": "sap.ovp.cards.table",
+				"settings": {
+					"title": "{{card03_title}}",
+					"entitySet": "Category_Sales_for_1997",
+					"addODataSelect": false,
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#SalesDetails"
+				}
+			},
+			"card08": {
+				"model": "Northwind",
+				"template": "sap.ovp.cards.table",
+				"settings": {
+					"title": "{{card02_title}}",
+					"subTitle": "{{card02_subTitle}}",
+					"entitySet": "Customers",
+					"addODataSelect": false,
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#northwind_Table_customers"
+				}
+			},
+			"card09": {
+				"model": "Northwind",
+				"template": "sap.ovp.cards.list",
+				"settings": {
+					"title": "{{card00_title}}",
+					"subTitle": "{{card00_subTitle}}",
+					"entitySet": "Employees",
+					"addODataSelect": false,
+					"annotationPath": "com.sap.vocabularies.UI.v1.LineItem#Top5Employees",
+					"listType": "extended",
+					"listFlavor": "standard",
+					"sortBy": "HireDate",
+					"sortOrder": "ascending"
+				}
+			},
+			"card101": {
+				"template": "OVP.OverViewPage.ext.CustomCard",
+				"settings": {
+					"title": "{{card101_title}}"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

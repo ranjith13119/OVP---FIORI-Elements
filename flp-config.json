@@ -1,0 +1,35 @@
+{
+    "application": {
+        "id": "",
+        "title": "OverViewPage",
+        "description": "OverViewPage Using Fiori Elements",
+        "type": "SAP_UI5_Component",
+        "componentUrl": "/",
+        "appUrl": "#OverViewPage-Display",
+        "navigationComponentName": "OVP.OverViewPage",
+        "intentSemanticObject": "OverViewPage",
+        "intentAction": "Display",
+        "html5ApplicationName": "overviewpage",
+        "HCPParentApplicationName": ""
+    },
+    "assignment": {
+        "groups": [
+            "b4147b9e-77f2-4019-9fd3-0ff546f52792"
+        ],
+        "contentPackages": [
+            "39a58e2d-3c4e-4bdb-91c8-3b1a969a8067"
+        ],
+        "categories": []
+    },
+    "tile": {
+        "type": "StaticTile",
+        "title": "Overview Page",
+        "subtitle": "Using Fiori Elements",
+        "searchKeywords": "Overview Page,Using Fiori Elements",
+        "displayIconUrl": "sap-icon://overview-chart",
+        "displayInfoText": "",
+        "size": "1x1",
+        "serviceURL": "",
+        "refreshInterval": ""
+    }
+}

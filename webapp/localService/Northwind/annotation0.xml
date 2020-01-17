@@ -1,0 +1,614 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Aggregation.V1.xml">
+		<edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/462030211/Analytics.xml">
+		<edmx:Include Alias="Analytics" Namespace="com.sap.vocabularies.Analytics.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Authorization.V1.xml">
+		<edmx:Include Alias="Auth" Namespace="Org.OData.Authorization.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470974/Common.xml?api=v2">
+		<edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470971/Communication.xml?api=v2">
+		<edmx:Include Alias="Communication" Namespace="com.sap.vocabularies.Communication.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Measures.V1.xml">
+		<edmx:Include Alias="Measures" Namespace="Org.OData.Measures.V1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/496435637/PersonalData.xml">
+		<edmx:Include Alias="PersonalData" Namespace="com.sap.vocabularies.PersonalData.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://wiki.scn.sap.com/wiki/download/attachments/448470968/UI.xml?api=v2">
+		<edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Validation.V1.xml">
+		<edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm">
+			<Annotations Target="NorthwindModel.Employee">
+				<Annotation Term="UI.LineItem" Qualifier="Top5Employees">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="LastName"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="FirstName"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="HireDate"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="City"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Title"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Region"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="NorthwindModel.Product_Sales_for_1997">
+				<Annotation Term="UI.KPI" Qualifier="donutKPI">
+					<Record Type="UI.KPIType">
+						<PropertyValue Property="SelectionVariant">
+							<Record Type="UI.SelectionVariantType">
+								<PropertyValue Property="SelectOptions">
+									<Collection>
+										<Record Type="UI.SelectOptionType">
+											<PropertyValue Property="PropertyName" PropertyPath="ProductSales"/>
+											<PropertyValue Property="Ranges">
+												<Collection>
+													<Record Type="UI.SelectionRangeType">
+														<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+														<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/GE"/>
+														<PropertyValue Property="Low" Int="2000"/>
+													</Record>
+												</Collection>
+											</PropertyValue>
+										</Record>
+									</Collection>
+								</PropertyValue>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="DataPoint">
+							<Record Type="UI.DataPointType">
+								<PropertyValue Property="Value" Path="ProductSales"/>
+								<PropertyValue Property="CriticalityCalculation">
+									<Record Type="UI.CriticalityCalculationType">
+										<PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+										<PropertyValue Property="ToleranceRangeLowValue" Int="35"/>
+									</Record>
+								</PropertyValue>
+								<PropertyValue Property="ValueFormat">
+									<Record Type="UI.NumberFormat">
+										<PropertyValue Property="NumberOfFractionalDigits" Int="1"/>
+										<PropertyValue Property="ScaleFactor" Decimal="1000"/>
+									</Record>
+								</PropertyValue>
+								<PropertyValue Property="TrendCalculation">
+									<Record Type="UI.TrendCalculationType">
+										<PropertyValue Property="ReferenceValue" String="1500"/>
+										<PropertyValue Property="UpDifference" Decimal="500"/>
+										<PropertyValue Property="StrongUpDifference" Decimal="1000"/>
+										<PropertyValue Property="DownDifference" Decimal="100"/>
+										<PropertyValue Property="StrongDownDifference" Decimal="200"/>
+									</Record>
+								</PropertyValue>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="Detail">
+							<Record Type="UI.KPIDetailType">
+								<PropertyValue Property="DefaultPresentationVariant">
+									<Record Type="UI.PresentationVariantType">
+										<PropertyValue Property="Visualizations">
+											<Collection>
+												<AnnotationPath>@UI.Chart#northwind_donut</AnnotationPath>
+											</Collection>
+										</PropertyValue>
+									</Record>
+								</PropertyValue>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="northwind_donut">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+						<PropertyValue Property="Title" String="{@i18n&gt;PRODUCT_SALES_BY_CATEGORY}"/>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="ProductSales"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Measures">
+							<Collection>
+								<PropertyPath>ProductSales</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="Dimensions">
+							<Collection>
+								<PropertyPath>CategoryName</PropertyPath>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="CategoryName"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="NorthwindModel.Customer">
+				<Annotation Term="UI.LineItem" Qualifier="northwind_Table_customers">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ContactName"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;CUSTOMER_NAME}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CompanyName"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;COMPANY}"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="Phone"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;CONTACT_NUMBER}"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="NorthwindModel.Category_Sales_for_1997">
+				<Annotation Term="UI.LineItem" Qualifier="SalesDetails">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="CategoryName"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;CATEGORY}"/>
+						</Record>
+						<Record Type="UI.DataFieldForAnnotation">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#CategorySales"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;SALES}"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="CategorySales">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="CategorySales"/>
+						<PropertyValue Property="CriticalityCalculation">
+							<Record Type="UI.CriticalityCalculationType">
+								<PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Minimize"/>
+								<PropertyValue Property="ToleranceRangeLowValue" Int="50000"/>
+								<PropertyValue Property="ToleranceRangeHighValue" Int="70000"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="Title" String="{@i18n&gt;SALES}"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="NorthwindModel.Invoice/ProductName">
+				<Annotation Term="Common.SemanticObject" String="Action"/>
+			</Annotations>
+			<Annotations Target="NorthwindModel.Invoice">
+				<Annotation Term="UI.Identification" Qualifier="productHeader1">
+					<Collection>
+						<Record Type="UI.DataFieldForIntentBasedNavigation">
+							<PropertyValue Property="SemanticObject" String="Action"/>
+							<PropertyValue Property="Action" String="toappnavsample"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<!--to show the KPI in header-->
+				<Annotation Term="UI.DataPoint" Qualifier="line">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="ExtendedPrice"/>
+						<PropertyValue Property="Title" String="{@i18n&gt;INVOICE_PRICE}"/>
+						<PropertyValue Property="CriticalityCalculation">
+							<Record Type="UI.CriticalityCalculationType">
+								<PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+								<PropertyValue Property="ToleranceRangeLowValue" Int="14000"/>
+								<PropertyValue Property="DeviationRangeLowValue" Int="12000"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="ValueFormat">
+							<Record Type="UI.NumberFormat">
+								<PropertyValue Property="NumberOfFractionalDigits" Int="1"/>
+								<PropertyValue Property="ScaleFactor" Decimal="1000"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="TrendCalculation">
+							<Record Type="UI.TrendCalculationType">
+								<PropertyValue Property="ReferenceValue" String="1500"/>
+								<PropertyValue Property="UpDifference" Decimal="500"/>
+								<PropertyValue Property="StrongUpDifference" Decimal="1000"/>
+								<PropertyValue Property="DownDifference" Decimal="100"/>
+								<PropertyValue Property="StrongDownDifference" Decimal="200"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem" Qualifier="Top5Invoices">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ProductName"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ShipName"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ExtendedPrice"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="NorthwindModel.Products_by_Category">
+				<Annotation Term="UI.DataPoint" Qualifier="Status">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="UnitsInStock"/>
+						<PropertyValue Property="CriticalityCalculation">
+							<Record Type="UI.CriticalityCalculationType">
+								<PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+								<PropertyValue Property="ToleranceRangeLowValue" Int="4"/>
+								<PropertyValue Property="DeviationRangeLowValue" Int="3"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="Status2">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="Discontinued"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem" Qualifier="Top5OutOfStock">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value">
+								<Apply Function="odata.concat">
+									<Path>ProductName</Path>
+									<String>
+										-
+									</String>
+									<Path>CategoryName</Path>
+								</Apply>
+							</PropertyValue>
+						</Record>
+						<Record Type="UI.DataFieldForAnnotation">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#Status"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="NorthwindModel.Product/UnitsInStock">
+				<Annotation Term="Org.OData.Measures.V1.Unit" String="%"/>
+			</Annotations>
+			<Annotations Target="NorthwindModel.Product/ProductName">
+				<Annotation Term="Common.SemanticObject" String="Action"/>
+			</Annotations>
+			<Annotations Target="NorthwindModel.Product">
+				<Annotation Term="UI.Identification" Qualifier="card">
+					<Collection>
+						<Record Type="UI.DataFieldForIntentBasedNavigation">
+							<PropertyValue Property="SemanticObject" String="Action"/>
+							<PropertyValue Property="Action" String="toappnavsample"/>
+							<PropertyValue Property="Label" String="APPROVE"/>
+						</Record>
+						<Record Type="UI.DataFieldForIntentBasedNavigation">
+							<PropertyValue Property="SemanticObject" String="Action"/>
+							<PropertyValue Property="Action" String="toappnavsample"/>
+							<PropertyValue Property="Label" String="{@i18n&gt;REJECT}"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.Identification" Qualifier="header">
+					<Collection>
+						<Record Type="UI.DataFieldForIntentBasedNavigation">
+							<PropertyValue Property="SemanticObject" String="Action"/>
+							<PropertyValue Property="Action" String="toappnavsample"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.HeaderInfo">
+					<Record Type="UI.HeaderInfoType">
+						<PropertyValue Property="TypeName" String="{@i18n&gt;PRODUCT}"/>
+						<PropertyValue Property="TypeNamePlural" String="{@i18n&gt;PRODUCTS}"/>
+						<PropertyValue Property="Title">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value" Path="ProductName"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="ImageUrl" String="sap-icon://sales-order"/>
+						<PropertyValue Property="Description">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value" Path="UnitPrice"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group1">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ProductID"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;PRODUCT_ID}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="ProductName"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;PRODUCT_NAME}"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.FieldGroup" Qualifier="group2">
+					<Record Type="UI.FieldGroupType">
+						<PropertyValue Property="Data">
+							<Collection>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="SupplierID"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;SUPPLIER_ID}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="UnitsInStock"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;UNITSINSTOCK}"/>
+								</Record>
+								<Record Type="UI.DataField">
+									<PropertyValue Property="Value" Path="UnitsOnOrder"/>
+									<PropertyValue Property="Label" String="{@i18n&gt;UNITSONORDER}"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="com.sap.vocabularies.UI.v1.Facets" Qualifier="stack">
+					<Collection>
+						<Record Type="com.sap.vocabularies.UI.v1.ReferenceFacet">
+							<Annotation Term="com.sap.vocabularies.UI.v1.IsSummary"/>
+							<PropertyValue Property="Label" String="Note"/>
+							<PropertyValue Property="Target" AnnotationPath="@com.sap.vocabularies.UI.v1.FieldGroup#group1"/>
+						</Record>
+						<Record Type="com.sap.vocabularies.UI.v1.ReferenceFacet">
+							<Annotation Term="com.sap.vocabularies.UI.v1.IsSummary"/>
+							<PropertyValue Property="Label" String="Note1"/>
+							<PropertyValue Property="Target" AnnotationPath="@com.sap.vocabularies.UI.v1.FieldGroup#group2"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.Identification" Qualifier="urlbasedNavigation">
+					<Collection>
+						<Record Type="UI.DataFieldWithUrl">
+							<PropertyValue Property="Url" String="https://mail.tcs.com"/>
+							<PropertyValue Property="Value" Path="ProductName"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="KPI">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Title" String="KPI Title"/>
+						<PropertyValue Property="Value" Path="UnitsInStock"/>
+						<PropertyValue Property="CriticalityCalculation">
+							<Record Type="com.sap.vocabularies.UI.v1.CriticalityCalculationType">
+								<PropertyValue Property="ImprovementDirection" EnumMember="com.sap.vocabularies.UI.v1.ImprovementDirectionType/Maximizing"/>
+								<PropertyValue Property="ToleranceRangeLowValue" String="3000"/>
+								<PropertyValue Property="DeviationRangeLowValue" String="4000"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="ValueFormat">
+							<Record Type="com.sap.vocabularies.UI.v1.NumberFormat">
+								<PropertyValue Property="ScaleFactor" Decimal="1000"/>
+								<PropertyValue Property="NumberOfFractionalDigits" Int="1"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="TrendCalculation">
+							<Record>
+								<PropertyValue Property="ReferenceValue" String="85000"/>
+								<PropertyValue Property="StrongUpDifference" Decimal="2000.0"/>
+								<PropertyValue Property="UpDifference" Decimal="100"/>
+								<PropertyValue Property="StrongDownDifference" Decimal="100"/>
+								<PropertyValue Property="DownDifference" Decimal="1000"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ProductName"/>
+							<PropertyValue Property="Label" String="product Name"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="UnitPrice"/>
+							<PropertyValue Property="Label" String="unit prize"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="QuantityPerUnit"/>
+							<PropertyValue Property="Label" String="Quantity per unit"/>
+						</Record>
+					</Collection>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="ReorderLevel">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="ReorderLevel"/>
+						<PropertyValue Property="CriticalityCalculation">
+							<Record Type="UI.CriticalityCalculationType">
+								<PropertyValue Property="ImprovementDirection" EnumMember="UI.CriticalityCalculationType/Maximize"/>
+								<PropertyValue Property="ToleranceRangeLowValue" Int="5"/>
+								<PropertyValue Property="DeviationRangeLowValue" Int="1"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="UnitsInStock">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="UnitsInStock"/>
+						<PropertyValue Property="CriticalityCalculation">
+							<Record Type="UI.CriticalityCalculationType">
+								<PropertyValue Property="ImprovementDirection" EnumMember="UI.CriticalityCalculationType/Maximize"/>
+								<PropertyValue Property="ToleranceRangeLowValue" Int="100"/>
+								<PropertyValue Property="DeviationRangeLowValue" Int="25"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.DataPoint" Qualifier="UnitPrice">
+					<Record Type="UI.DataPointType">
+						<PropertyValue Property="Value" Path="UnitPrice"/>
+						<PropertyValue Property="CriticalityCalculation">
+							<Record Type="UI.CriticalityCalculationType">
+								<PropertyValue Property="ImprovementDirection" EnumMember="UI.CriticalityCalculationType/Maximize"/>
+								<PropertyValue Property="ToleranceRangeLowValue" Int="35"/>
+								<PropertyValue Property="DeviationRangeLowValue" Int="20"/>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Qualifier="TopReorderProducts" Term="UI.LineItem">
+					<Collection>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="ProductName"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="QuantityPerUnit"/>
+						</Record>
+						<Record Type="UI.DataFieldForAnnotation">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#ReorderLevel"/>
+						</Record>
+						<Record Type="UI.DataFieldForAnnotation">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#UnitsInStock"/>
+						</Record>
+						<Record Type="UI.DataFieldForAnnotation">
+							<PropertyValue Property="Target" AnnotationPath="@UI.DataPoint#UnitPrice"/>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="NorthwindModel.Category">
+				<Annotation Term="UI.HeaderInfo" Qualifier="staticLinklist">
+					<Record Type="UI.HeaderInfoType">
+						<PropertyValue Property="TypeName" String="{@i18n&gt;CATEGORY}"/>
+						<PropertyValue Property="TypeNamePlural" String="{@i18n&gt;CATEGORY}"/>
+						<PropertyValue Property="Title">
+							<Record Type="UI.DataField">
+								<PropertyValue Property="Value" Path="CategoryName"/>
+								<PropertyValue Property="Label" String="{@i18n&gt;CATEGORY_NAME}"/>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="ImageUrl" Path="Picture"/>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="NorthwindModel.Products_Above_Average_Price">
+				<!--<Annotation Term="UI.Identification" Qualifier="Eval_by_Price">-->
+				<!--	<Collection>-->
+				<!--		<Record Type="UI.DataFieldForIntentBasedNavigation">-->
+				<!--			<PropertyValue Property="Label" String="Price"/>-->
+				<!--			<PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Positive"/>-->
+				<!--			<PropertyValue Property="SemanticObject" String="OVP"/>-->
+				<!--			<PropertyValue Property="Action" String="Procurement"/>-->
+				<!--		</Record>-->
+				<!--	</Collection>-->
+				<!--</Annotation>-->
+				<Annotation Term="UI.KPI" Qualifier="ColumnChart">
+					<Record Type="UI.KPIType">
+						<PropertyValue Property="SelectionVariant">
+							<Record Type="UI.SelectionVariantType">
+								<PropertyValue Property="SelectOptions">
+									<Collection>
+										<Record Type="UI.SelectOptionType">
+											<PropertyValue Property="PropertyName" PropertyPath="UnitPrice"/>
+											<PropertyValue Property="Ranges">
+												<Collection>
+													<Record Type="UI.SelectionRangeType">
+														<PropertyValue Property="Sign" EnumMember="UI.SelectionRangeSignType/I"/>
+														<PropertyValue Property="Option" EnumMember="UI.SelectionRangeOptionType/GE"/>
+														<PropertyValue Property="Low" String="0"/>
+													</Record>
+												</Collection>
+											</PropertyValue>
+										</Record>
+									</Collection>
+								</PropertyValue>
+							</Record>
+						</PropertyValue>
+						<PropertyValue Property="DataPoint">
+							<Record Type="UI.DataPointType">
+								<PropertyValue Property="Title" String="{@i18n&gt;UNIT_PRICE}"/>
+								<PropertyValue Property="Value" Path="UnitPrice"/>
+								<PropertyValue Property="CriticalityCalculation">
+									<Record Type="UI.CriticalityCalculationType">
+										<PropertyValue Property="ImprovementDirection" EnumMember="UI.ImprovementDirectionType/Maximize"/>
+										<PropertyValue Property="ToleranceRangeLowValue" Int="35"/>
+									</Record>
+								</PropertyValue>
+							</Record>
+							<PropertyValue Property="ValueFormat">
+								<Record Type="UI.NumberFormat">
+									<PropertyValue Property="NumberOfFractionalDigits" Int="1"/>
+									<PropertyValue Property="ScaleFactor" Decimal="1000"/>
+								</Record>
+							</PropertyValue>
+							<PropertyValue Property="TrendCalculation">
+								<Record Type="UI.TrendCalculationType">
+									<PropertyValue Property="ReferenceValue" String="1500"/>
+									<PropertyValue Property="UpDifference" Decimal="500"/>
+									<PropertyValue Property="StrongUpDifference" Decimal="1000"/>
+									<PropertyValue Property="DownDifference" Decimal="100"/>
+									<PropertyValue Property="StrongDownDifference" Decimal="200"/>
+								</Record>
+							</PropertyValue>
+						</PropertyValue>
+						<PropertyValue Property="Detail">
+							<Record Type="UI.KPIDetailType">
+								<PropertyValue Property="DefaultPresentationVariant">
+									<Record Type="UI.PresentationVariantType">
+										<PropertyValue Property="Visualizations">
+											<Collection>
+												<AnnotationPath>@UI.Chart#ColumnTime</AnnotationPath>
+											</Collection>
+										</PropertyValue>
+									</Record>
+								</PropertyValue>
+							</Record>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="UI.Chart" Qualifier="ColumnTime">
+					<Record Type="UI.ChartDefinitionType">
+						<PropertyValue Property="Title" String="Products Average Prices"/>
+						<PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+						<PropertyValue Property="MeasureAttributes">
+							<Collection>
+								<Record Type="UI.ChartMeasureAttributeType">
+									<PropertyValue Property="Measure" PropertyPath="UnitPrice"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="DimensionAttributes">
+							<Collection>
+								<Record Type="UI.ChartDimensionAttributeType">
+									<PropertyValue Property="Dimension" PropertyPath="ProductName"/>
+									<PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
